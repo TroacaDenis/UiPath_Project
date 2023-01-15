@@ -21439,15 +21439,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pscup\\.nuget\\packages\\": {}
+    "C:\\Users\\Denis Hadirca\\.nuget\\packages\\": {},
+    "D:\\visual studioooo\\shared\\NuGetPackages": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Proiect",
       "projectName": "Proiect",
-      "projectPath": "C:\\Users\\pscup\\Downloads\\UiPath_Project\\.local",
-      "packagesPath": "C:\\Users\\pscup\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pscup\\Downloads\\UiPath_Project\\.local"
+      "projectPath": "C:\\Users\\Denis Hadirca\\Desktop\\rpa final folder\\UiPath_Project\\.local",
+      "packagesPath": "C:\\Users\\Denis Hadirca\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Denis Hadirca\\Desktop\\rpa final folder\\UiPath_Project\\.local",
+      "fallbackFolders": [
+        "D:\\visual studioooo\\shared\\NuGetPackages"
+      ]
     },
     "frameworks": {
       "net6.0-windows7.0": {
@@ -21483,7 +21487,7 @@
             "version": "[22.10.4, 22.10.4]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\pscup\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Denis Hadirca\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
