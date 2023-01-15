@@ -5,15 +5,16 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)AllDependencies.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\pscup\.nuget\packages\</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Denis Hadirca\.nuget\packages\;D:\visual studioooo\shared\NuGetPackages</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">Unknown</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.3.1</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\pscup\.nuget\packages\" />
+    <SourceRoot Include="C:\Users\Denis Hadirca\.nuget\packages\" />
+    <SourceRoot Include="D:\visual studioooo\shared\NuGetPackages\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\pscup\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0</PkgMicrosoft_CodeAnalysis_Analyzers>
-    <PkgUiPath_Mail_Activities Condition=" '$(PkgUiPath_Mail_Activities)' == '' ">C:\Users\pscup\.nuget\packages\uipath.mail.activities\1.18.2</PkgUiPath_Mail_Activities>
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\Denis Hadirca\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgUiPath_Mail_Activities Condition=" '$(PkgUiPath_Mail_Activities)' == '' ">C:\Users\Denis Hadirca\.nuget\packages\uipath.mail.activities\1.18.2</PkgUiPath_Mail_Activities>
   </PropertyGroup>
 </Project>
