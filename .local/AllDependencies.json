@@ -21439,15 +21439,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pscup\\.nuget\\packages\\": {}
+    "C:\\Users\\calin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Proiect",
       "projectName": "Proiect",
-      "projectPath": "C:\\Users\\pscup\\OneDrive\\Documents\\UiPath\\UiPath_Project\\.local",
-      "packagesPath": "C:\\Users\\pscup\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pscup\\OneDrive\\Documents\\UiPath\\UiPath_Project\\.local"
+      "projectPath": "C:\\Users\\calin\\Desktop\\teme facultate\\AN 3\\Semestrul 1\\RPA\\.local",
+      "packagesPath": "C:\\Users\\calin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\calin\\Desktop\\teme facultate\\AN 3\\Semestrul 1\\RPA\\.local",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ]
     },
     "frameworks": {
       "net6.0-windows7.0": {
@@ -21483,7 +21487,7 @@
             "version": "[22.10.4, 22.10.4]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\pscup\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\calin\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
