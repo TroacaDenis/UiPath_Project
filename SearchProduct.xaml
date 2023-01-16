@@ -39,7 +39,7 @@
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="22">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -61,17 +61,19 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SearchProduct" sap:VirtualizedContainerService.HintSize="400,393" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SearchProduct" sap:VirtualizedContainerService.HintSize="400,523" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_product]" />
     <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT'" sap:VirtualizedContainerService.HintSize="338,135" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_product]">
       <ui:TypeInto.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1b25aa55-5a10-4436-adfc-31c3db869dc4" InformativeScreenshot="83d559b65a723571290321523c5051c8" Selector="&lt;html app='firefox.exe' title='eMAG.ro - Căutarea nu se oprește niciodată' /&gt;&lt;webctrl id='searchboxTrigger' tag='INPUT' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1b25aa55-5a10-4436-adfc-31c3db869dc4" InformativeScreenshot="06eb095ed09742005ed4b8783be87dcd" Selector="&lt;html app='chrome.exe' title='eMAG.ro - Căutarea nu se oprește niciodată' /&gt;&lt;webctrl id='searchboxTrigger' tag='INPUT' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -93,7 +95,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="866eba46-5a96-42cb-9823-af7af2f7ec6f" InformativeScreenshot="602473a13897322501d13dfb6352af04" Selector="&lt;html app='firefox.exe' title='eMAG.ro - Căutarea nu se oprește niciodată' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;nav&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;button&amp;gt;i' idx='2' parentid='masthead' tag='I' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="866eba46-5a96-42cb-9823-af7af2f7ec6f" InformativeScreenshot="3e25a4bf973f75d4762d84fecd69f7a9" Selector="&lt;html app='chrome.exe' title='eMAG.ro - Căutarea nu se oprește niciodată' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;nav&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;button&amp;gt;i' idx='2' parentid='masthead' tag='I' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
