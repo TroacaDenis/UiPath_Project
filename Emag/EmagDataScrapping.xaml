@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="DataScrapping" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_product" Type="InArgument(x:String)" />
+    <x:Property Name="in_price" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1605,813</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1431,1048</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataScrapping_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -89,7 +90,7 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DataScrapping" sap:VirtualizedContainerService.HintSize="400,830" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DataScrapping" sap:VirtualizedContainerService.HintSize="401,983" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="emag.ro" Name="URL" />
       <Variable x:TypeArguments="x:String" Default="telefon" Name="product" />
@@ -101,42 +102,37 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="OpenWebPage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="OpenWebPage.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="OpenWebPage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="339,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="OpenWebPage.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_URL">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="URL" />
-        </InArgument>
-        <InArgument x:TypeArguments="ui:Browser" x:Key="out_browser">
-          <VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="browser" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_URL">[URL]</InArgument>
+        <InArgument x:TypeArguments="ui:Browser" x:Key="out_browser">[browser]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SearchProduct.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="SearchProduct.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EmagSearchProduct.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="339,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Emag\EmagSearchProduct.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_product">[in_product]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="GetData.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EmagFilter.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="339,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Emag\EmagFilter.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dataTable">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dataTable" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_product">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_product" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_price">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_price" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CSVWriter.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="CSVWriter.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EmagGetData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="339,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Emag\EmagGetData.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dataTable">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dataTable" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_product">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_product" />
-        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dataTable">[dataTable]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_product">[in_product]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Close'" sap:VirtualizedContainerService.HintSize="338,107" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CSVWriter.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="339,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="CSVWriter.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dataTable">[dataTable]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_product">[in_product]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Close'" sap:VirtualizedContainerService.HintSize="339,107" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
           <ui:CursorPosition.OffsetX>
@@ -148,7 +144,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e7c12af7-ddb6-4a9a-8b5b-b356566085e7" InformativeScreenshot="07b1225c6883bc76edbaaa637ba26857" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Cauți iPhone 12 Pro? Alege din oferta eMAG.ro - Google Chrome' /&gt;&lt;ctrl name='Cauți iPhone 12 Pro? Alege din oferta eMAG.ro - Google Chrome' role='pane' /&gt;&lt;ctrl name='Close' role='push button' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e7c12af7-ddb6-4a9a-8b5b-b356566085e7" InformativeScreenshot="07b1225c6883bc76edbaaa637ba26857" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' omit:title='Ai căutat iPhone 12 Pro in Telefoane Mobile Pret 345 - 3.500 eMA*' /&gt;&lt;ctrl omit:name='Ai căutat iPhone 12 Pro in Telefoane Mobile Pret 345 - 3.500 eMA*' role='pane' /&gt;&lt;ctrl name='Close' role='push button' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>

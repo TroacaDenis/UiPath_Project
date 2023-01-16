@@ -21445,9 +21445,9 @@
     "restore": {
       "projectUniqueName": "Proiect",
       "projectName": "Proiect",
-      "projectPath": "C:\\Users\\pscup\\OneDrive\\Documents\\UiPath\\UiPath_Project\\.local",
+      "projectPath": "C:\\Users\\pscup\\Downloads\\UiPath_Project\\.local",
       "packagesPath": "C:\\Users\\pscup\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pscup\\OneDrive\\Documents\\UiPath\\UiPath_Project\\.local"
+      "outputPath": "C:\\Users\\pscup\\Downloads\\UiPath_Project\\.local"
     },
     "frameworks": {
       "net6.0-windows7.0": {
