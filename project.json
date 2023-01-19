@@ -40,7 +40,9 @@
       "privateWorkflows": []
     },
     "processOptions": {
-      "ignoredFiles": []
+      "ignoredFiles": [
+        "GetProductsFromExcel.xaml"
+      ]
     },
     "fileInfoCollection": [],
     "modernBehavior": false
