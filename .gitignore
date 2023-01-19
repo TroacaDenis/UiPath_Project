@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 .entities
 .local
 .project
 .settings
 .templates
+=======
+.entities
+.local
+.project
+.settings
+.templates
+>>>>>>> main
 .tmh
