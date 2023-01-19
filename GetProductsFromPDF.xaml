@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="GetProductsFromPDF" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_pdf" Type="InArgument(x:String)" />
+    <x:Property Name="in_receiver" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1431,1398</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1131.2,1552.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetProductsFromPDF_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -83,9 +84,10 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetProductsFromPDF" sap:VirtualizedContainerService.HintSize="594,1333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetProductsFromPDF" sap:VirtualizedContainerService.HintSize="593.6,1488" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="splitText" />
       <Variable x:TypeArguments="x:Int32" Name="i" />
@@ -98,8 +100,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[in_pdf]" sap:VirtualizedContainerService.HintSize="532,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[text]" />
-    <Assign sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[in_pdf]" sap:VirtualizedContainerService.HintSize="531.2,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[text]" />
+    <Assign sap:VirtualizedContainerService.HintSize="531.2,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[splitText]</OutArgument>
       </Assign.To>
@@ -107,7 +109,7 @@
         <InArgument x:TypeArguments="s:String[]">[text.Split(Environment.NewLine.ToArray, StringSplitOptions.RemoveEmptyEntries)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="531.2,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[i]</OutArgument>
       </Assign.To>
@@ -115,9 +117,9 @@
         <InArgument x:TypeArguments="x:Int32">1</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[i &lt;&gt; splitText.Count()]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="532,878" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[i &lt;&gt; splitText.Count()]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="531.2,1032.8" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,712" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,865.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <Sequence.Variables>
             <Variable x:TypeArguments="s:String[]" Name="words" />
           </Sequence.Variables>
@@ -126,7 +128,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_14">
+          <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_14">
             <Assign.To>
               <OutArgument x:TypeArguments="s:String[]">[words]</OutArgument>
             </Assign.To>
@@ -134,7 +136,7 @@
               <InArgument x:TypeArguments="s:String[]">[splitText(i).Split(" "c)]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_15">
+          <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_15">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[product]</OutArgument>
             </Assign.To>
@@ -142,7 +144,7 @@
               <InArgument x:TypeArguments="x:String">[Join(words.Take(words.Length - 1).ToArray(), " ")]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_16">
+          <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_16">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[maxPrice]</OutArgument>
             </Assign.To>
@@ -150,7 +152,7 @@
               <InArgument x:TypeArguments="x:String">[words(words.Count - 1)]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_17">
+          <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_17">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[i]</OutArgument>
             </Assign.To>
@@ -158,13 +160,35 @@
               <InArgument x:TypeArguments="x:Int32">[i + 1]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DataScrapping.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Emag\EmagDataScrapping.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DataScrapping.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Emag\EmagDataScrapping.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_product">
                 <VisualBasicValue x:TypeArguments="x:String" ExpressionText="product" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_price">
                 <VisualBasicValue x:TypeArguments="x:String" ExpressionText="maxPrice" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_receiver">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_receiver" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_file">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pdf" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AltexDataScrapping.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Altex\AltexDataScrapping.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_product">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="product" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_price">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="maxPrice" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_receiver">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_receiver" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_file">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pdf" />
               </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
