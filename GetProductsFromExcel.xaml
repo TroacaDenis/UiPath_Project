@@ -90,7 +90,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">260,2.6666666666666643</av:Point>
         <av:Size x:Key="ShapeSize">60,74.66666666666667</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">290,77.33333333333334 290,183</av:PointCollection>
+        <av:PointCollection x:Key="ConnectorLocation">290,77.33333333333334 290,107.33333333333333 300,107.33333333333333 300,153</av:PointCollection>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
         <x:Double x:Key="Width">600.6666666666664</x:Double>
         <x:Double x:Key="Height">600.0399999999998</x:Double>
@@ -102,9 +102,9 @@
     <FlowStep x:Name="__ReferenceID1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">190,183</av:Point>
+          <av:Point x:Key="ShapeLocation">200,153</av:Point>
           <av:Size x:Key="ShapeSize">200,54</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">290,237 290,343</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,207 300,237.00000000000003 290,237.00000000000003 290,343</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[products]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="exemplu.xlsx" />
