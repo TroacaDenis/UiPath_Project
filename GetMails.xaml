@@ -1,6 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetMailAttachments" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1130.4,1152.8" sap2010:WorkflowViewState.IdRef="GetMailAttachments_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetMailAttachments" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1515,1152</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>GetMailAttachments_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="31">
+    <scg:List x:TypeArguments="x:String" Capacity="62">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -32,10 +40,11 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -66,9 +75,22 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetMailAttachments" sap:VirtualizedContainerService.HintSize="593.6,1278.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetMailAttachments" sap:VirtualizedContainerService.HintSize="594,1087" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mails" />
       <Variable x:TypeArguments="x:String" Name="username" />
@@ -79,31 +101,20 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="531.2,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="NewMails" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="531.2,362.4" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,284" sap2010:WorkflowViewState.IdRef="Sequence_3">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:GetRobotCredential AssetName="gmailCredentials" CacheStrategy="None" DisplayName="Get Credential" FolderPath="RpaProject" sap:VirtualizedContainerService.HintSize="337.6,172" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[password]" Username="[username]">
-            <ui:GetRobotCredential.TimeoutMS>
-              <InArgument x:TypeArguments="x:Int32" />
-            </ui:GetRobotCredential.TimeoutMS>
-          </ui:GetRobotCredential>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="troacad2@gmail.com" EnableSSL="True" FilterExpression="[&quot;SUBJECT &quot;&quot;Product prices&quot;&quot;&quot;]" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="531.2,24.8" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" IgnoreCRL="False" MailFolder="Inbox" MarkAsRead="True" Messages="[mails]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Password="swfpbbexmmasjjju" Port="993" SecureConnection="Auto" Server="imap.gmail.com" Top="30" />
-    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="531.2,578.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[mails]">
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="532,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_config(&quot;source_mail_folder&quot;).ToString]" />
+    <ui:GetRobotCredential AssetName="gmailCredentials" CacheStrategy="None" DisplayName="Get Credential" FolderPath="proiect" sap:VirtualizedContainerService.HintSize="532,168" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[password]" Username="[username]">
+      <ui:GetRobotCredential.TimeoutMS>
+        <InArgument x:TypeArguments="x:Int32" />
+      </ui:GetRobotCredential.TimeoutMS>
+    </ui:GetRobotCredential>
+    <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="[username]" EnableSSL="True" FilterExpression="[&quot;SUBJECT &quot;&quot;Product prices&quot;&quot;&quot;]" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="532,25" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" IgnoreCRL="False" MailFolder="Inbox" MarkAsRead="True" Messages="[mails]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Port="993" SecureConnection="Auto" SecurePassword="[password]" Server="imap.gmail.com" Top="30" />
+    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="532,583" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[mails]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="mail" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,452.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,457" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="sender" />
             </Sequence.Variables>
@@ -112,7 +123,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[sender]</OutArgument>
               </Assign.To>
@@ -120,8 +131,8 @@
                 <InArgument x:TypeArguments="x:String">[mail.From.Address.ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[&quot;NewMails/&quot; + sender]" sap:VirtualizedContainerService.HintSize="433.6,89.6" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[mail]" OverwriteExisting="False" />
-            <ui:MoveIMAPMailMessageToFolder ClientName="{x:Null}" ClientVersion="{x:Null}" FromFolder="{x:Null}" SecurePassword="{x:Null}" UseOAuth="{x:Null}" DisplayName="Move IMAP Mail Message" Email="troacad2@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="433.6,89.6" sap2010:WorkflowViewState.IdRef="MoveIMAPMailMessageToFolder_2" IgnoreCRL="False" MailFolder="ReceivedByProject" MailMessage="[mail]" Password="swfpbbexmmasjjju" Port="993" SecureConnection="Auto" Server="imap.gmail.com" />
+            <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[in_config(&quot;source_mail_folder&quot;).ToString + &quot;/&quot; + sender]" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[mail]" OverwriteExisting="False" />
+            <ui:MoveIMAPMailMessageToFolder ClientName="{x:Null}" ClientVersion="{x:Null}" FromFolder="{x:Null}" SecurePassword="{x:Null}" UseOAuth="{x:Null}" DisplayName="Move IMAP Mail Message" Email="troacad2@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="MoveIMAPMailMessageToFolder_2" IgnoreCRL="False" MailFolder="ReceivedByProject" MailMessage="[mail]" Password="swfpbbexmmasjjju" Port="993" SecureConnection="Auto" Server="imap.gmail.com" />
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>

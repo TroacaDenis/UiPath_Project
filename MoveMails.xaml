@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="MoveFiles" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1234,938" sap2010:WorkflowViewState.IdRef="MoveFiles_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="MoveFiles" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1515,938</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>MoveFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
       <x:String>System.Activities</x:String>
@@ -73,6 +81,7 @@
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="MoveFiles" sap:VirtualizedContainerService.HintSize="496,873" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -89,11 +98,11 @@
         <OutArgument x:TypeArguments="x:String">[destination]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["OldProductsInfo\" + System.DateTime.Now.ToString("HH-mm dd-MM-yyyy")]</InArgument>
+        <InArgument x:TypeArguments="x:String">[in_config("archive_mail_folder").ToString + "\" + System.DateTime.Now.ToString("HH-mm dd-MM-yyyy")]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[destination]" />
-    <ui:ForEachFolderX DisplayName="For Each Folder in Folder" Folder="NewProductsInfo" sap:VirtualizedContainerService.HintSize="434,520" sap2010:WorkflowViewState.IdRef="ForEachFolderX_1" IncludeSubFolders="False" OrderBy="LastUpdatedDateOldFirst" SkipFoldersWithoutPermission="False">
+    <ui:ForEachFolderX DisplayName="For Each Folder in Folder" Folder="[in_config(&quot;source_mail_folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="434,520" sap2010:WorkflowViewState.IdRef="ForEachFolderX_1" IncludeSubFolders="False" OrderBy="LastUpdatedDateOldFirst" SkipFoldersWithoutPermission="False">
       <ui:ForEachFolderX.Body>
         <ActivityAction x:TypeArguments="si:DirectoryInfo, x:Int32">
           <ActivityAction.Argument1>

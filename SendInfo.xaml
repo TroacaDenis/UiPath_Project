@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SendMails" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1047.2,2375.2" sap2010:WorkflowViewState.IdRef="SendMails_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SendMails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1515,2164</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SendMails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="66">
       <x:String>System.Activities</x:String>
@@ -91,7 +99,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SendMails" sap:VirtualizedContainerService.HintSize="752.8,2310.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SendMails" sap:VirtualizedContainerService.HintSize="732,2099" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="template" />
       <Variable x:TypeArguments="x:String" Name="username" />
@@ -102,20 +110,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="690.4,362.4" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,284" sap2010:WorkflowViewState.IdRef="Sequence_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="gmailCredentials" CacheStrategy="None" DisplayName="Get Credential" FolderPath="RpaProject" sap:VirtualizedContainerService.HintSize="337.6,172" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[password]" Username="[username]" />
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:ReadTextFile File="{x:Null}" Content="[template]" DisplayName="Read Text File" FileName="EmailTemplate.txt" sap:VirtualizedContainerService.HintSize="690.4,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:ForEachFolderX DisplayName="For Each Folder in Folder" Folder="NewProductsInfo" sap:VirtualizedContainerService.HintSize="690.4,1675.2" sap2010:WorkflowViewState.IdRef="ForEachFolderX_1" IncludeSubFolders="False" OrderBy="LastUpdatedDateOldFirst" SkipFoldersWithoutPermission="True">
+    <ui:GetRobotCredential AssetName="gmailCredentials" CacheStrategy="None" DisplayName="Get Credential" FolderPath="proiect" sap:VirtualizedContainerService.HintSize="670,168" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[password]" Username="[username]">
+      <ui:GetRobotCredential.TimeoutMS>
+        <InArgument x:TypeArguments="x:Int32" />
+      </ui:GetRobotCredential.TimeoutMS>
+    </ui:GetRobotCredential>
+    <ui:ReadTextFile File="{x:Null}" Content="[template]" DisplayName="Read Text File" FileName="EmailTemplate.txt" sap:VirtualizedContainerService.HintSize="670,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:ForEachFolderX DisplayName="For Each Folder in Folder" Folder="[in_config(&quot;source_info_folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="670,1660" sap2010:WorkflowViewState.IdRef="ForEachFolderX_1" IncludeSubFolders="False" OrderBy="LastUpdatedDateOldFirst" SkipFoldersWithoutPermission="True">
       <ui:ForEachFolderX.Body>
         <ActivityAction x:TypeArguments="si:DirectoryInfo, x:Int32">
           <ActivityAction.Argument1>
@@ -124,7 +125,7 @@
           <ActivityAction.Argument2>
             <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
           </ActivityAction.Argument2>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="656.8,1420" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="636,1410" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="receiver" />
             </Sequence.Variables>
@@ -133,7 +134,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="594.4,80.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap:VirtualizedContainerService.HintSize="574,82" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[receiver]</OutArgument>
               </Assign.To>
@@ -141,7 +142,7 @@
                 <InArgument x:TypeArguments="x:String">[CurrentFolder.ToString.Split("\").Last()]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[CurrentFolder.ToString]" sap:VirtualizedContainerService.HintSize="594.4,1187.2" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="LastUpdatedDateOldFirst" SkipFolderWithoutPermission="True">
+            <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[CurrentFolder.ToString]" sap:VirtualizedContainerService.HintSize="574,1177" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="LastUpdatedDateOldFirst" SkipFolderWithoutPermission="True">
               <ui:ForEachFileX.Body>
                 <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                   <ActivityAction.Argument1>
@@ -150,7 +151,7 @@
                   <ActivityAction.Argument2>
                     <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                   </ActivityAction.Argument2>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="560.8,932" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="540,927" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="body" />
                     </Sequence.Variables>
@@ -159,23 +160,23 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign sap:VirtualizedContainerService.HintSize="498.4,80.8" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign sap:VirtualizedContainerService.HintSize="478,82" sap2010:WorkflowViewState.IdRef="Assign_2">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[body]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[String.Format(template, CurrentFile.ToString.Split("\").Last())]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[String.Format(template, CurrentFile.ToString.Split("\").Last().Replace("_output.xlsx", "").Replace("_", "."))]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <If Condition="[Regex.IsMatch(receiver,&quot;([a-zA-Z0-9._-]+@gmail.com)&quot;)]" sap:VirtualizedContainerService.HintSize="498.4,699.2" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If Condition="[Regex.IsMatch(receiver,&quot;([a-zA-Z0-9._-]+@gmail.com)&quot;)]" sap:VirtualizedContainerService.HintSize="478,694" sap2010:WorkflowViewState.IdRef="If_1">
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="400,258.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <Sequence sap:VirtualizedContainerService.HintSize="400,257" sap2010:WorkflowViewState.IdRef="Sequence_5">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[body]" DisplayName="Send SMTP Mail Message" Email="troacad2@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="337.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="False" Password="swfpbbexmmasjjju" Port="465" SecureConnection="Auto" SecurePassword="[password]" Server="smtp.gmail.com" Subject="Product prices" To="[receiver]">
+                          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[body]" DisplayName="Send SMTP Mail Message" Email="[username]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="338,146" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="False" Port="465" SecureConnection="Auto" SecurePassword="[password]" Server="smtp.gmail.com" Subject="Product prices" To="[receiver]">
                             <ui:SendMail.Files>
                               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                                 <InArgument x:TypeArguments="x:String">[CurrentFile.ToString]</InArgument>
@@ -185,14 +186,14 @@
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <Sequence sap:VirtualizedContainerService.HintSize="420.8,262.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <Sequence sap:VirtualizedContainerService.HintSize="400,261" sap2010:WorkflowViewState.IdRef="Sequence_6">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="358.4,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Not gmail address encountered&quot;]" />
-                          <ui:Break sap:VirtualizedContainerService.HintSize="358,25" sap2010:WorkflowViewState.IdRef="Break_1" />
+                          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="338,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Not gmail address encountered&quot;]" />
+                          <ui:Break sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="Break_1" />
                         </Sequence>
                       </If.Else>
                     </If>
